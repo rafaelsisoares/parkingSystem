@@ -23,4 +23,26 @@ public class PersonService {
   public Person getPersonById(Long id) throws PersonNotFoundException {
     return personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
   }
+
+  public Person createPerson(Person person) {
+    return personRepository.save(person);
+  }
+
+  public Person updatePerson(Long id, Person person) throws PersonNotFoundException {
+    Person personFromDb = getPersonById(id);
+
+    personFromDb.setName(person.getName());
+    personFromDb.setEmail(person.getEmail());
+    personFromDb.setPhone(person.getPhone());
+
+    return personRepository.save(personFromDb);
+  }
+
+  public Person removePerson(Long id) throws PersonNotFoundException {
+    Person person = getPersonById(id);
+
+    personRepository.delete(person);
+
+    return person;
+  }
 }
