@@ -29,7 +29,7 @@ public class PersonService {
   }
 
   public Person updatePerson(Long id, Person person) throws PersonNotFoundException {
-    Person personFromDb = getPersonById(id);
+    Person personFromDb = getById(id);
 
     personFromDb.setName(person.getName());
     personFromDb.setEmail(person.getEmail());
@@ -39,7 +39,7 @@ public class PersonService {
   }
 
   public Person removePerson(Long id) throws PersonNotFoundException {
-    Person person = getPersonById(id);
+    Person person = getById(id);
 
     personRepository.delete(person);
 
