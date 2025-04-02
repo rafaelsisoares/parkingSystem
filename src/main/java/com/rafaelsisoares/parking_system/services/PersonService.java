@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.rafaelsisoares.parking_system.entities.Person;
 import com.rafaelsisoares.parking_system.repositories.PersonRepository;
+import com.rafaelsisoares.parking_system.services.exceptions.PersonNotFoundException;
 
 @Service
 public class PersonService {
@@ -19,7 +20,7 @@ public class PersonService {
     return personRepository.findAll();
   }
 
-  public Person getPersonById(Long id) {
-    return personRepository.findById(id);
+  public Person getPersonById(Long id) throws PersonNotFoundException {
+    return personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
   }
 }
