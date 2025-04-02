@@ -27,4 +27,22 @@ public class CarService {
   public Car createCar(Car car) {
     return carRepository.save(car);
   }
+
+  public Car updateCar(Long id, Car car) throws CarNotFoundException {
+    Car carFromDb = getById(id);
+
+    carFromDb.setBrand(car.getBrand());
+    carFromDb.setModel(car.getModel());
+    carFromDb.setPlate(car.getPlate());
+
+    return carRepository.save(carFromDb);
+  }
+
+  public Car removeCar(Long id) throws CarNotFoundException {
+    Car car = getById(id);
+
+    carRepository.delete(car);
+
+    return car;
+  }
 }
