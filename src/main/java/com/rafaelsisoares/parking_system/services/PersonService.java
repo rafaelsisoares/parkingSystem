@@ -16,11 +16,11 @@ public class PersonService {
     this.personRepository = personRepository;
   }
 
-  public List<Person> getAllPersons() {
+  public List<Person> getAll() {
     return personRepository.findAll();
   }
 
-  public Person getPersonById(Long id) throws PersonNotFoundException {
+  public Person getById(Long id) throws PersonNotFoundException {
     return personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
   }
 
