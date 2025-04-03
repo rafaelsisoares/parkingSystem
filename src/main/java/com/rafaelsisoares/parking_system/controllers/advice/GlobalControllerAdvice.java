@@ -12,4 +12,10 @@ public class GlobalControllerAdvice {
   public ResponseEntity<String> handleNotFound(NotFoundException exception) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
   }
+
+  @ExceptionHandler
+  public ResponseEntity<String> handleGenericException(Exception _exception) {
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("Ocorreu um erro inesperado.");
+  }
 }
