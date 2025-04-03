@@ -2,9 +2,11 @@ package com.rafaelsisoares.parking_system.controllers;
 
 import java.util.List;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -37,5 +39,17 @@ public class PersonController {
   @ResponseStatus(HttpStatus.CREATED)
   public PersonDto createPerson(@RequestBody PersonCreationDto person) {
     return PersonDto.fromEntity(personService.createPerson(person.toEntity()));
+  }
+
+  @PutMapping("/{id}")
+  public PersonDto updatePerson(@PathVariable Long id, @RequestBody PersonCreationDto person)
+      throws PersonNotFoundException {
+    return PersonDto.fromEntity(personService.updatePerson(id, person.toEntity()));
+  }
+
+  @DeleteMapping("/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public PersonDto removePerson(@PathVariable Long id) throws PersonNotFoundException {
+    return PersonDto.fromEntity(personService.removePerson(id));
   }
 }
