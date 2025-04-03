@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.rafaelsisoares.parking_system.services.exceptions.NotFoundException;
 
+// Classe que centraliza o tratamento de excecoes.
 @ControllerAdvice
 public class GlobalControllerAdvice {
   @ExceptionHandler
