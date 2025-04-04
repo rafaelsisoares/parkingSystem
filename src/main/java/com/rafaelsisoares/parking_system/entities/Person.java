@@ -1,9 +1,11 @@
 package com.rafaelsisoares.parking_system.entities;
 
+import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +18,9 @@ public class Person {
   private String name;
   private String email;
   private String phone;
+
+  @OneToMany(mappedBy = "person")
+  private List<Car> cars;
 
   public Person() {}
 
@@ -55,6 +60,14 @@ public class Person {
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  public List<Car> getCars() {
+    return cars;
+  }
+
+  public void setCars(List<Car> cars) {
+    this.cars = cars;
   }
 
 }
