@@ -61,4 +61,9 @@ public class CarController {
       throws CarNotFoundException, PersonNotFoundException {
     return CarDto.fromEntity(carService.setPerson(carId, personId));
   }
+
+  @DeleteMapping("/{id}/person")
+  public CarDto removePerson(@PathVariable Long id) throws CarNotFoundException {
+    return CarDto.fromEntity(carService.removePerson(id));
+  }
 }
