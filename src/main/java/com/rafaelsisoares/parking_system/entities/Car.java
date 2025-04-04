@@ -19,7 +19,7 @@ public class Car {
   private String model;
   private String plate;
 
-  @ManyToOne(optional = false)
+  @ManyToOne
   @JoinColumn(name = "person_id")
   private Person person;
 
