@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +18,10 @@ public class Car {
   private String brand;
   private String model;
   private String plate;
+
+  @OneToMany
+  @JoinColumn(name = "person_id")
+  private Person person;
 
   public Car() {}
 
@@ -55,6 +61,14 @@ public class Car {
 
   public void setPlate(String plate) {
     this.plate = plate;
+  }
+
+  public Person getPerson() {
+    return person;
+  }
+
+  public void setPerson(Person person) {
+    this.person = person;
   }
 
 }
