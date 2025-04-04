@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,7 +19,7 @@ public class Car {
   private String model;
   private String plate;
 
-  @OneToMany
+  @ManyToOne(optional = false)
   @JoinColumn(name = "person_id")
   private Person person;
 
