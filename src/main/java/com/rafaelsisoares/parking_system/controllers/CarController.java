@@ -16,6 +16,7 @@ import com.rafaelsisoares.parking_system.controllers.dto.CarCreationDto;
 import com.rafaelsisoares.parking_system.controllers.dto.CarDto;
 import com.rafaelsisoares.parking_system.services.CarService;
 import com.rafaelsisoares.parking_system.services.exceptions.CarNotFoundException;
+import com.rafaelsisoares.parking_system.services.exceptions.PersonNotFoundException;
 
 @RestController
 @RequestMapping(value = "/cars")
@@ -53,5 +54,11 @@ public class CarController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public CarDto removeCar(@PathVariable Long id) throws CarNotFoundException {
     return CarDto.fromEntity(carService.removeCar(id));
+  }
+
+  @PutMapping("/{carId}/person/{personId}")
+  public CarDto setPerson(@PathVariable Long carId, @PathVariable Long personId)
+      throws CarNotFoundException, PersonNotFoundException {
+    return CarDto.fromEntity(carService.setPerson(carId, personId));
   }
 }
