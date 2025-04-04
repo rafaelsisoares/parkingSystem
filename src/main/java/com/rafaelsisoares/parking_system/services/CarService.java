@@ -59,4 +59,12 @@ public class CarService {
 
     return carRepository.save(car);
   }
+
+  public Car removePerson(Long carId) throws CarNotFoundException {
+    Car car = getById(carId);
+
+    car.setPerson(null);
+
+    return carRepository.save(car);
+  }
 }
