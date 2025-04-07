@@ -7,6 +7,7 @@ import com.rafaelsisoares.parking_system.entities.Car;
 import com.rafaelsisoares.parking_system.entities.Person;
 import com.rafaelsisoares.parking_system.repositories.CarRepository;
 import com.rafaelsisoares.parking_system.services.exceptions.CarNotFoundException;
+import com.rafaelsisoares.parking_system.services.exceptions.ExistingDataException;
 import com.rafaelsisoares.parking_system.services.exceptions.PersonNotFoundException;
 
 @Service
@@ -51,9 +52,13 @@ public class CarService {
   }
 
   public Car setPerson(Long carId, Long personId)
-      throws CarNotFoundException, PersonNotFoundException {
+      throws CarNotFoundException, PersonNotFoundException, ExistingDataException {
     Car car = getById(carId);
     Person person = personService.getById(personId);
+
+    if (car.getPerson() != null) {
+      throw new ExistingDataException();
+    }
 
     car.setPerson(person);
 
