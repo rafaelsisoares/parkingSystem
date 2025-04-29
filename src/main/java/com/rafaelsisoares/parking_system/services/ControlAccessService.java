@@ -37,7 +37,7 @@ public class ControlAccessService {
         ControlAccess result = findByPlate(plate);
         if(result == null) {
             Car car = carService.getByPlate(plate);
-            if(car.getPerson() == null) {
+            if(car == null || car.getPerson() == null) {
                 throw new UnauthorizedPlateException();
             }
             ControlAccess newAccess = new ControlAccess();

@@ -23,4 +23,9 @@ public class ControlAccessController {
     public ResponseEntity<String> entrance(@RequestParam("plate") String plate) throws DoubleAccessException, UnauthorizedPlateException {
         return ResponseEntity.status(HttpStatus.OK).body("Bem vindo(a) " + controlAccessService.entrance(plate).getName());
     }
+
+    @PutMapping("/exit")
+    public ResponseEntity<String> exit(@RequestParam("plate") String plate) throws DoubleAccessException, UnauthorizedPlateException {
+        return ResponseEntity.status(HttpStatus.OK).body("Até logo " + controlAccessService.exit(plate).getName());
+    }
 }
