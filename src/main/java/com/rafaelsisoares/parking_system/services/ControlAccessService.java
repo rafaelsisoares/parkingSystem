@@ -51,7 +51,7 @@ public class ControlAccessService {
             throw new DoubleAccessException();
         }
         result.setPosition(actualPosition);
-        return controlAccessRepository.save(result);
+        return create(result);
     }
 
     public ControlAccess entrance(String plate) throws DoubleAccessException, UnauthorizedPlateException {
