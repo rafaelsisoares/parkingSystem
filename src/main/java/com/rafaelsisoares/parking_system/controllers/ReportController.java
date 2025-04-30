@@ -3,9 +3,7 @@ package com.rafaelsisoares.parking_system.controllers;
 import com.rafaelsisoares.parking_system.controllers.dto.ReportDto;
 import com.rafaelsisoares.parking_system.services.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,15 @@ public class ReportController {
     @GetMapping
     public List<ReportDto> findAll() {
         return reportService.findAll().stream().map(ReportDto::fromEntity).toList();
+    }
+
+    @GetMapping("/name")
+    public List<ReportDto> findByName(@RequestBody String name) {
+        return reportService.findByName(name).stream().map(ReportDto::fromEntity).toList();
+    }
+
+    @GetMapping("/plate")
+    public List<ReportDto> findByPlate(@RequestBody String plate) {
+        return reportService.findByPlate(plate).stream().map(ReportDto::fromEntity).toList();
     }
 }
