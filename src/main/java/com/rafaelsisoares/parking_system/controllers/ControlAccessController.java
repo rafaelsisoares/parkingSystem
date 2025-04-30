@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/access")
+@RequestMapping(value = "/access")
 public class ControlAccessController {
     private final ControlAccessService controlAccessService;
 

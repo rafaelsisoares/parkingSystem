@@ -45,7 +45,7 @@ public class ControlAccessService {
         report.setName(newAccess.getName());
         report.setPlate(newAccess.getPlate());
         report.setPosition(newAccess.getPosition() ? "IN" : "OUT");
-        report.setDate(LocalDateTime.parse(LocalDateTime.now().format(brazilianPattern)));
+        report.setDate(LocalDateTime.now().format(brazilianPattern));
 
         reportService.create(report);
     }

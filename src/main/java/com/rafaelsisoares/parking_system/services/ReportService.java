@@ -2,7 +2,6 @@ package com.rafaelsisoares.parking_system.services;
 
 import com.rafaelsisoares.parking_system.entities.Report;
 import com.rafaelsisoares.parking_system.repositories.ReportRepository;
-import com.rafaelsisoares.parking_system.services.exceptions.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

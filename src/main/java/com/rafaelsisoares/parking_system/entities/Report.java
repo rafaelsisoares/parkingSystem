@@ -2,8 +2,6 @@ package com.rafaelsisoares.parking_system.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "reports")
 public class Report {
@@ -14,11 +12,11 @@ public class Report {
     private String name;
     private String plate;
     private String position;
-    private LocalDateTime date;
+    private String date;
 
     public Report() {}
 
-    public Report(Long id, String name, String plate, String position, LocalDateTime date) {
+    public Report(Long id, String name, String plate, String position, String date) {
         this.id = id;
         this.name = name;
         this.plate = plate;
@@ -58,11 +56,11 @@ public class Report {
         this.position = position;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
