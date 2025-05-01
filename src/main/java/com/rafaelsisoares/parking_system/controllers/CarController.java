@@ -22,7 +22,7 @@ import com.rafaelsisoares.parking_system.services.exceptions.PersonNotFoundExcep
 @RestController
 @RequestMapping(value = "/cars")
 public class CarController {
-  private CarService carService;
+  private final CarService carService;
 
   @Autowired
   public CarController(CarService carService) {

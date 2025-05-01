@@ -12,8 +12,8 @@ import com.rafaelsisoares.parking_system.services.exceptions.PersonNotFoundExcep
 
 @Service
 public class CarService {
-  private CarRepository carRepository;
-  private PersonService personService;
+  private final CarRepository carRepository;
+  private final PersonService personService;
 
   @Autowired
   public CarService(CarRepository carRepository, PersonService personService) {
@@ -71,5 +71,9 @@ public class CarService {
     car.setPerson(null);
 
     return carRepository.save(car);
+  }
+
+  public Car getByPlate(String plate) {
+    return carRepository.findByPlate(plate);
   }
 }
