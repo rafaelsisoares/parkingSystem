@@ -18,8 +18,11 @@ public class ReportController {
     }
 
     @GetMapping
-    public List<ReportDto> findAll() {
-        return reportService.findAll().stream().map(ReportDto::fromEntity).toList();
+    public List<ReportDto> findAll(
+            @RequestParam(required = false, defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "5") int pageSize
+    ) {
+        return reportService.findAll(pageNumber, pageSize).stream().map(ReportDto::fromEntity).toList();
     }
 
     @GetMapping("/name")

@@ -3,6 +3,9 @@ package com.rafaelsisoares.parking_system.services;
 import com.rafaelsisoares.parking_system.entities.Report;
 import com.rafaelsisoares.parking_system.repositories.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +19,10 @@ public class ReportService {
         this.reportRepository = reportRepository;
     }
 
-    public List<Report> findAll() {
-        return reportRepository.findAll();
+    public List<Report> findAll(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<Report> reportPage =  reportRepository.findAll(pageable);
+        return reportPage.toList();
     }
 
     public List<Report> findByName(String name) {
