@@ -9,7 +9,7 @@ import com.rafaelsisoares.parking_system.repositories.CarRepository;
 
 @Component
 public class CarSeeder implements CommandLineRunner {
-  private CarRepository carRepository;
+  private final CarRepository carRepository;
 
   public CarSeeder(CarRepository carRepository) {
     this.carRepository = carRepository;
@@ -17,7 +17,6 @@ public class CarSeeder implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    System.out.println(args);
     seedCars();
   }
 
